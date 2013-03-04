@@ -5,11 +5,13 @@
 // for Memory log
 #import <mach/mach.h>
 
-@interface RFPerformance ()
-
+@interface RFPerformance () {
+    time_t timeBase;
+}
 @end
 
 @implementation RFPerformance
+@synthesize timeTable = _timeTable;
 
 + (RFPerformance *)sharedInstance {
     static RFPerformance *sharedInstance = nil;
@@ -52,7 +54,7 @@
 	float time1 = [(NSNumber *)[self.timeTable objectForKey:name1] floatValue];
 	float time2 = [(NSNumber *)[self.timeTable objectForKey:name2] floatValue];
 	float time = time1 - time2;
-	return ABS(time);
+	return fabsf(time);
 }
 
 + (void)logMemoryInfo {

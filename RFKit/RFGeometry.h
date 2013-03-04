@@ -5,7 +5,7 @@
     Math and Graphics helper
  
     Copyright (c) 2012-2013 BB9z
-    http://github.com/bb9z/RFKit
+    https://github.com/bb9z/RFKit
  
     The MIT License (MIT)
     http://www.opensource.org/licenses/mit-license.php
@@ -15,6 +15,10 @@
 
 #ifndef _RFKit_RFGeometry_h_
 #define _RFKit_RFGeometry_h_
+
+#ifndef RFMathNotChange
+#   define RFMathNotChange CGFLOAT_MAX
+#endif
 
 typedef enum {
 	RFResizeAnchorCenter = 0,

@@ -44,11 +44,13 @@
 
 #pragma mark 视图位置／尺寸
 
--(void)exhangeWidthHight {
+- (void)exhangeWidthHight {
 	CGRect tmp = self.bounds;
 	self.frame = CGRectMake(tmp.origin.x, tmp.origin.y, tmp.size.height, tmp.size.width);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wfloat-equal"
 - (void)moveX:(CGFloat)x Y:(CGFloat)y {
 	CGPoint tmp = self.center;
 	if (x != RFMathNotChange) tmp.x += x;
@@ -73,6 +75,7 @@
     CGRect targetFrame = CGRectResize(self.frame, newSize, resizeAnchor);
     self.frame = targetFrame;
 }
+#pragma clang diagnostic pop
 
 - (CGFloat)distanceBetweenFrameBottomAndSuperviewBottom {
 	CGRect frame = self.frame;
@@ -138,10 +141,9 @@
 			
 		case RFViewResizeOptionCenter:
 			view.center = self.center;
-			return;
 			break;
-			
-		default:
+            
+        case RFViewResizeOptionNone:
 			break;
 	}
 }
@@ -151,7 +153,7 @@
         [view removeFromSuperview];
     }
     else {
-        douts(@"Warning: RFKit [UIView removeSubview] 父视图没有指定的子视图")
+        dout_warning(@"RFKit [UIView removeSubview] 父视图没有指定的子视图")
     }
 }
 
@@ -200,20 +202,20 @@
 	[self.superview exchangeSubviewAtIndex:CurrentIndex withSubviewAtIndex:CurrentIndex+1];
 }
 
--(void)sendOneLevelDown{
+- (void)sendOneLevelDown{
 	int currentIndex = [self getSubviewIndex];
 	[self.superview exchangeSubviewAtIndex:currentIndex withSubviewAtIndex:currentIndex-1];
 }
 
--(BOOL)isInFront{
-	return ([self.superview.subviews lastObject]==self);
+- (BOOL)isInFront{
+	return ([self.superview.subviews lastObject] == self);
 }
 
--(BOOL)isAtBack{
-	return ([self.superview.subviews objectAtIndex:0]==self);
+- (BOOL)isAtBack{
+	return ([self.superview.subviews objectAtIndex:0] == self);
 }
 
--(void)exchangeDepthsWithView:(UIView*)swapView{
+- (void)exchangeDepthsWithView:(UIView*)swapView{
 	[self.superview exchangeSubviewAtIndex:[self getSubviewIndex] withSubviewAtIndex:[swapView getSubviewIndex]];
 }
 
