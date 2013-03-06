@@ -28,11 +28,13 @@
     1   Default, DOUT_LOG_ENABLE off. For production environment.
     0   Silent.
  */
+
+
 #ifndef RFDebugLevel
 #   if DEBUG
 #       define RFDebugLevel 2
 #   else
-#       define RFDebugLevel 1
+#       define RFDebugLevel 5   ///暂时改下
 #   endif
 #endif
 
