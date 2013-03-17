@@ -1,4 +1,7 @@
 
+#define kDEFAULT_DATE_TIME_FORMAT @"yyyy-MM-dd HH:mm"
+#define kDEFAULT_SECOND_DATE_TIME_FORMAT @"yyyy-MM-dd HH:mm:ss"
+#define kDEFAULT_T_DATE_TIME_FORMAT @"yyyy-MM-dd'T'HH:mm:ss+00:00"
 #import "RFKit.h"
 #import "NSDate+RFKit.h"
 
@@ -29,4 +32,54 @@
     NSString *date_time = [NSString stringWithFormat:@"%@ %@",date ,time];
     return date_time;
 }
+
++(NSDate *)NSStringDateToNSDate:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [formatter setDateFormat:kDEFAULT_DATE_TIME_FORMAT];
+    NSDate *date = [formatter dateFromString:string];
+    return date;
+}
+
++(NSDate *)NSStringDateToNSDateWithSecond:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [formatter setDateFormat:kDEFAULT_SECOND_DATE_TIME_FORMAT];
+    NSDate *date = [formatter dateFromString:string];
+    return date;
+}
+
++(NSDate *)NSStringDateToNSDateWithT:(NSString *)string {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [formatter setDateFormat:kDEFAULT_T_DATE_TIME_FORMAT];
+    NSDate *date = [formatter dateFromString:string];
+    return date;
+}
+
++ (NSDate *)localNowDate {
+    NSDate *date = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: date];
+    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
+    return localeDate;
+}
+
+
+- (NSString *)showSelf {
+	NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+	[formater setDateFormat:@"yyyy-MM-dd HH:mm"];
+	[formater setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSString* timeDesp = [formater stringFromDate:self];
+	return timeDesp;
+}
+
+- (NSString *)showSelfWithoutTime {
+	NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+	[formater setDateFormat:@"yyyy-MM-dd"];
+	[formater setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSString* timeDesp = [formater stringFromDate:self];
+	return timeDesp;
+}
+
 @end
