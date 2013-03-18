@@ -17,16 +17,19 @@
     NSMutableString *params = nil;
     if(nil != para){
         params = [[NSMutableString alloc] init];
-        for(id key in para){
-            NSString *encodedkey = [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            
-            CFStringRef value = (__bridge CFStringRef)[[para objectForKey:key] copy];
-            CFStringRef encodedValue = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, value,NULL,(CFStringRef)@";/?:@&=+$", kCFStringEncodingUTF8);
-            [params appendFormat:@"%@=%@&", encodedkey, encodedValue];
-//            CFRelease(value);
-//            CFRelease(encodedValue);
+        for(id key in [para allKeys]){
+            if (key) {
+                NSString *encodedkey = [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                
+                CFStringRef value = (__bridge CFStringRef)[[para objectForKey:key] copy];
+                CFStringRef encodedValue = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, value,NULL,(CFStringRef)@";/?:@&=+$", kCFStringEncodingUTF8);
+                [params appendFormat:@"%@=%@&", encodedkey, encodedValue];
+            }
         }
+        if ([params length] >1) {
         [params deleteCharactersInRange:NSMakeRange([params length] - 1, 1)];
+        }
+
     }
     if([method isEqualToString:@"POST"]){
         body = [params dataUsingEncoding:NSUTF8StringEncoding];
