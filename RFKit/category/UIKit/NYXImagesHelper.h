@@ -45,3 +45,4 @@ CGImageRef NYXCreateGradientImage(const size_t pixelsWide, const size_t pixelsHi
 CIContext* NYXGetCIContext(void);
 CGColorSpaceRef NYXGetRGBColorSpace(void);
 void NYXImagesKitRelease(void);
+

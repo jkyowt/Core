@@ -61,6 +61,7 @@ CGImageRef NYXCreateGradientImage(const size_t pixelsWide, const size_t pixelsHi
     return theCGImage;
 }
 
+
 CIContext* NYXGetCIContext(void)
 {
 	if (!__ciContext)
