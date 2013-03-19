@@ -14,4 +14,13 @@
 @interface NSDate (RFKit)
 
 - (BOOL)isSameDayWithDate:(NSDate *)date;
+
++ (NSString *)nowDate;
++(NSDate *)NSStringDateToNSDate:(NSString *)string;
++(NSDate *)NSStringDateToNSDateWithT:(NSString *)string;
++(NSDate *)NSStringDateToNSDateWithSecond:(NSString *)string;
+
++ (NSDate *)localNowDate;
+- (NSString *)showSelf;
+- (NSString *)showSelfWithoutTime;
 @end
