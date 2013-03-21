@@ -18,4 +18,6 @@
 
 @interface NSMutableArray (RFKit)
 - (void)addObjectsFromDictionary:(NSDictionary *)otherDictionary keys:(NSString *)firstKey, ...NS_REQUIRES_NIL_TERMINATION;
+
+- (NSString *)stringValueSeperatedByComma;
 @end

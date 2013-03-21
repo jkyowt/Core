@@ -24,4 +24,9 @@
     va_end(ap);
 }
 
+- (NSString *)stringValueSeperatedByComma {
+    if([self count] == 0) return @"";
+
+}
+
 @end

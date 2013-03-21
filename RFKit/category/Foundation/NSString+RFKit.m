@@ -57,4 +57,9 @@
     
 }
 
+- (NSArray *)toArray {
+    NSArray *array = @[self];
+    return array;
+}
+
 @end
