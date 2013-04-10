@@ -23,4 +23,5 @@
 + (NSDate *)localNowDate;
 - (NSString *)showSelf;
 - (NSString *)showSelfWithoutTime;
+- (NSString *)daySinceNowReferenceDate:(NSString *)dateString;
 @end

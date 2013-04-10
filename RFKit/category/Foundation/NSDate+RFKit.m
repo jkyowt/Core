@@ -66,6 +66,28 @@
 }
 
 
+- (NSString *)daySinceNowReferenceDate:(NSString *)dateString {
+    NSDate *compareDate = [NSDate NSStringDateToNSDateWithSecond:dateString];
+    NSString *compareDateString = [compareDate description];
+    NSString *hourString = [compareDateString componentsSeparatedByString:@" "][1];
+    NSString *hourStingNoSeconds = [hourString substringToIndex:[hourString length]-3];
+    NSString *dateFormatString = @"";
+    
+    NSTimeInterval interval = [[NSDate localNowDate]timeIntervalSinceDate:compareDate];
+    
+    NSInteger day = interval/24/3600;
+    if ( day == 0 )
+        dateFormatString = [NSString stringWithFormat:@"今天 %@",hourStingNoSeconds];
+    else if ( day == 1 )
+        dateFormatString = [NSString stringWithFormat:@"昨天 %@",hourStingNoSeconds];
+    else if ( day == 2 )
+        dateFormatString = [NSString stringWithFormat:@"前天 %@",hourStingNoSeconds];
+    else
+        dateFormatString = [NSString stringWithFormat:@"%@ %@",[compareDateString componentsSeparatedByString:@" "][0],hourStingNoSeconds];
+    
+    return dateFormatString;
+}
+
 - (NSString *)showSelf {
 	NSDateFormatter* formater = [[NSDateFormatter alloc] init];
 	[formater setDateFormat:@"yyyy-MM-dd HH:mm"];
