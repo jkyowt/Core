@@ -24,6 +24,12 @@
     return [UIColor colorWithRGBHex:hexValue alpha:1.0f];
 }
 
++ (UIColor *)colorWithRGB:(float)R
+                        G:(float)G
+                        B:(float)B
+                    alpha:(float)alpha {
+    return [UIColor colorWithRed:R/255. green:G/255. blue:B/255. alpha:alpha];
+}
 
 + (UIColor *)colorWithRGBString:(NSString *)nsstring {
 	NSUInteger length = nsstring.length-1;

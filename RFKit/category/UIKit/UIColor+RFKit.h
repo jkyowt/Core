@@ -17,6 +17,11 @@
 + (UIColor*)colorWithRGBHex:(NSInteger)hexValue alpha:(CGFloat)alpha;
 + (UIColor*)colorWithRGBHex:(NSInteger)hexValue;
 
++ (UIColor *)colorWithRGB:(float)R
+                        G:(float)G
+                        B:(float)B
+                    alpha:(float)alpha;
+
 + (UIColor *)colorWithRGBString:(NSString *)nsstring;
 + (UIColor *)colorWithRGBString:(NSString *)nsstring alpha:(CGFloat)alpha;
 
