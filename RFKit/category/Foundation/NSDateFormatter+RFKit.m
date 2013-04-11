@@ -32,4 +32,16 @@
 	}
 	return RF_AUTORELEASE([share copy]);
 }
+
++ (NSDateFormatter *)currentLocaleFormatterOnlyDateSeperatedByDot {
+	static NSDateFormatter * share;
+	if (!share) {
+		share = [[NSDateFormatter alloc] init];
+		[share setLocale:[NSLocale currentLocale]];
+		[share setDateFormat:@"yyyy'.'MM'.'dd'"];
+	}
+	return RF_AUTORELEASE([share copy]);
+}
+
+
 @end

@@ -22,5 +22,5 @@
 
 + (NSDateFormatter *)currentLocaleFormatter;
 + (NSDateFormatter *)currentLocaleFormatterOnlyDate;
-
++ (NSDateFormatter *)currentLocaleFormatterOnlyDateSeperatedByDot;
 @end
