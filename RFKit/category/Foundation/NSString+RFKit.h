@@ -35,6 +35,7 @@
  */
 - (NSString *)stringTrimToWidthLength:(CGFloat)length WithFont:(UIFont *)font;
 
+- (NSArray *)arrayWithEachCharactor;
 
 
 @end

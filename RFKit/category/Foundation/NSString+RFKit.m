@@ -57,4 +57,13 @@
     
 }
 
+- (NSArray *)arrayWithEachCharactor {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:0];
+    for (NSInteger index = 0; index< [self length]; index ++) {
+        NSString *strAtIndex = [self substringWithRange:NSMakeRange(index, 1)];
+        [array addObject:strAtIndex];
+    }
+    return array;
+}
+
 @end
